@@ -6,8 +6,44 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>veri</title>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-900 flex">
     <div id="navbar-container"></div>
+    <div class="h-screen w-screen flex flex-col justify-center items-center p-10">
+
+        <h1 class="text-2xl font-bold text-[#4EABA6] mb-6 text-center">
+            Analicemos la imagen, <span class="font-semibold">Lorena Pesantes</span>:
+        </h1>
+
+        <div class="w-32 h-70 flex justify-center items-center mb-6">
+            <img src="/img/desc.svg" alt="Subir imagen" >
+        </div>
+
+        <div class="bg-[#6CB6B1] p-6 rounded-lg shadow-lg flex flex-col items-center">
+            <div class="grid grid-cols-4 gap-4 mb-4">
+                <div class="text-white font-semibold text-center">MELANOMA</div>
+                <div class="text-white font-semibold text-center">CARCINOMA ESPINOCELULAR</div>
+                <div class="text-white font-semibold text-center">CARCINOMA BASOCELULAR</div>
+                <div class="text-white font-semibold text-center">DIAGNÓSTICO FINAL</div>
+            </div>
+            
+            <div class="grid grid-cols-4 gap-4">
+                <input type="text" class="p-3 w-full bg-white rounded-lg shadow-md">
+                <input type="text" class="p-3 w-full bg-white rounded-lg shadow-md">
+                <input type="text" class="p-3 w-full bg-white rounded-lg shadow-md">
+                <input type="text" class="p-3 w-full bg-white rounded-lg shadow-md">
+            </div>
+        </div>
+        
+        <div class="flex gap-4 mt-6">
+            <button class="bg-[#6CB6B1] text-white font-bold px-6 py-2 rounded-lg shadow-md hover:bg-[#5AA19D]">
+                Seleccionar
+            </button>
+            <button class="bg-[#6CB6B1] text-white font-bold px-6 py-2 rounded-lg shadow-md hover:bg-[#5AA19D]">
+                Analizar
+            </button>
+        </div>
+    </div>
+    
     <script>
         fetch("/navbar.html")
             .then(response => response.text())

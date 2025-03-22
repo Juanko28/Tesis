@@ -6,8 +6,61 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>user</title>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-900 flex">
     <div id="navbar-container"></div>
+    <div class="w-full p-10 flex flex-col items-center h-screen justify-center">
+        <h1 class="text-3xl font-bold text-[#4EABA6] mb-6 text-center">Usuario</h1>
+    
+        <div class="flex   gap-1"> 
+            <div class="flex flex-col gap-6">
+                <div class="bg-[#6CB6B1] p-8 rounded-lg shadow-lg">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="text-white font-semibold">Nombre</label>
+                            <input type="text" class="w-full p-3 mt-1 bg-white rounded-lg shadow-md">
+                        </div>
+                        <div>
+                            <label class="text-white font-semibold">Apellido</label>
+                            <input type="text" class="w-full p-3 mt-1 bg-white rounded-lg shadow-md">
+                        </div>
+                        <div>
+                            <label class="text-white font-semibold">Edad</label>
+                            <input type="text" class="w-full p-3 mt-1 bg-white rounded-lg shadow-md">
+                        </div>
+                        <div>
+                            <label class="text-white font-semibold">Correo</label>
+                            <input type="email" class="w-full p-3 mt-1 bg-white rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Segunda Sección -->
+                <div class="bg-[#6CB6B1] p-8 rounded-lg shadow-lg">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="text-white font-semibold">DNI</label>
+                            <input type="text" class="w-full p-3 mt-1 bg-white rounded-lg shadow-md">
+                        </div>
+                        <div>
+                            <label class="text-white font-semibold">Propenso a Cáncer</label>
+                            <input type="text" class="w-full p-3 mt-1 bg-white rounded-lg shadow-md">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="text-white font-semibold">Contraseña</label>
+                        <input type="password" class="w-full p-3 mt-1 bg-white rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex items-end w-auto">
+                <button class="bg-[#6CB6B1] text-white font-bold px-8 py-3 rounded-lg shadow-md hover:bg-[#5AA19D]">
+                    Editar
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <script>
         fetch("/navbar.html")
             .then(response => response.text())
