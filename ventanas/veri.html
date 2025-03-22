@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>veri</title>
+    <link rel="icon" type="image/png" href="/img/702672.ico">
+    <title>Analizar</title>
 </head>
 <body class="bg-gray-100 text-gray-900 flex">
     <div id="navbar-container"></div>
@@ -45,7 +46,7 @@
     </div>
     
     <script>
-        fetch("/navbar.html")
+        fetch("/Component/navbar.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("navbar-container").innerHTML = data;
