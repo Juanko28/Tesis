@@ -1,0 +1,25 @@
+.contenedor {
+    display: flex;
+    width: 75%;
+    height: 75%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.div-movible {
+    transition: transform 0.6s ease-in-out;
+    position: absolute;
+    width: 60%;
+    top: 0;
+}
+
+#div1 {
+    left: 0;
+}
+
+#div2 {
+    left: 60%;
+}
