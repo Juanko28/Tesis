@@ -39,6 +39,40 @@ document.addEventListener("DOMContentLoaded", function () {
         div1.classList.replace("bg-[#60C2BB]", "bg-white");
         div2.classList.replace("bg-white", "bg-[#60C2BB]");
     });
+
+    document.getElementById("RegistrarBtn").addEventListener("click", async function () {
+        const name = document.querySelector("#div22 input[placeholder='Nombres']").value;
+        const email = document.querySelector("#div22 input[placeholder='Correo']").value;
+        const password = document.querySelector("#div22 input[placeholder='Contraseña']").value;
+    
+        const response = await fetch("http://127.0.0.1:5000/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email, password })
+        });
+    
+        const data = await response.json();
+        alert(data.message);
+    });
+
+    document.getElementById("IniciarBtn").addEventListener("click", async function () {
+        const email = document.querySelector("#div11 input[placeholder='Correo']").value;
+        const password = document.querySelector("#div11 input[placeholder='Contraseña']").value;
+    
+        const response = await fetch("http://127.0.0.1:5000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
+    
+        const data = await response.json();
+        alert(data.message);
+    });
+    
 });
 
 // Función para hacer fade-in
