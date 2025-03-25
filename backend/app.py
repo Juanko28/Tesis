@@ -1,8 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="Component", template_folder="ventanas")
 
 # Configuración de la conexión con MySQL
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:ClaveSegura123%40@localhost/tesis_db"
@@ -18,6 +18,11 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)  # Nuevo campo
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
+
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 # Ruta para registrar usuarios
 @app.route("/register", methods=["POST"])
