@@ -5,31 +5,36 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 
 # Configuración de la conexión con MySQL
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:ClaveSegura123@@localhost/tesis_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:ClaveSegura123%40@localhost/tesis_db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
-# Modelo de Usuario
+# Modelo de Usuario (solo referencia, NO crea la tabla)
 class User(db.Model):
+    __tablename__ = 'user'  # Usamos la tabla existente
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)  # Nuevo campo
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
-
-# Crear la base de datos (si no existe)
-with app.app_context():
-    db.create_all()
 
 # Ruta para registrar usuarios
 @app.route("/register", methods=["POST"])
 def register():
     data = request.get_json()
     hashed_password = bcrypt.generate_password_hash(data["password"]).decode("utf-8")
-    new_user = User(email=data["email"], password=hashed_password)
+    
+    new_user = User(
+        name=data["name"],  # Se guarda el nombre
+        email=data["email"], 
+        password=hashed_password
+    )
     db.session.add(new_user)
     db.session.commit()
+    
     return jsonify({"message": "Usuario registrado con éxito"}), 201
+
 
 # Ruta de inicio de sesión
 @app.route("/login", methods=["POST"])
